@@ -81,6 +81,7 @@ export default function ShowVoucherBatch({ voucherBatch, summary }: Props) {
         }
 
         const query = searchQuery.toLowerCase().trim();
+
         if (query) {
             items = items.filter((voucher) => {
                 const codeMatch = voucher.code?.toLowerCase().includes(query);
@@ -90,6 +91,7 @@ export default function ShowVoucherBatch({ voucherBatch, summary }: Props) {
                 const deptMatch = voucher.employee?.department?.name
                     ?.toLowerCase()
                     .includes(query);
+
                 return codeMatch || nameMatch || deptMatch;
             });
         }
