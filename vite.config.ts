@@ -24,9 +24,11 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
-        wayfinder({
-            formVariants: true,
-            command: 'C:/laragon/bin/php/php-8.3.29-nts-Win32-vs16-x64/php.exe artisan wayfinder:generate',
-        }),
+        ...(process.env.VERCEL ? [] : [
+            wayfinder({
+                formVariants: true,
+                command: 'C:/laragon/bin/php/php-8.3.29-nts-Win32-vs16-x64/php.exe artisan wayfinder:generate',
+            })
+        ]),
     ],
 });
